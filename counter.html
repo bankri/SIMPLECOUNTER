@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Simple Counter</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    button {
+      margin: 0 5px;
+      padding: 10px 20px;
+      font-size: 1rem;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- React & Babel -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- JSX Code -->
+  <script type="text/babel">
+    const container = document.getElementById("root");
+    const root = ReactDOM.createRoot(container);
+
+    function Counter() {
+      const [count, setCount] = React.useState(0);
+
+      const handleIncrement = () => setCount(count + 1);
+      const handleDecrement = () => setCount(count - 1);
+      const handleReset = () => setCount(0);
+
+      return (
+        <div>
+          <h1>{count}</h1>
+          <button onClick={handleDecrement}>−</button>
+          <button onClick={handleReset}>Reset</button>
+          <button onClick={handleIncrement}>+</button>
+        </div>
+      );
+    }
+
+    root.render(<Counter />);
+  </script>
+</body>
+</html>
